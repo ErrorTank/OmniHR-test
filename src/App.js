@@ -25,10 +25,10 @@ const Component = () => {
   }, []);
   return (
     //We can dettach the fetchFileContentFn -> onFileClicked to handle displaying
-    //file content outside of the AsyncTreeDirectories, make it more flexible if we have additional side effects
+    //file content outside of the TreeDirectories, make it more flexible if we have additional side effects
 
     //We also can provide more props to handle Synchronous directories
-    //(All items are availble initially and are passed into the AsyncTreeDirectories)
+    //(All items are availble initially and are passed into the TreeDirectories)
     <TreeDirectories
       async
       defaultExpand={false}
