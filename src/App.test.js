@@ -44,6 +44,10 @@ const MOCK_DATA_4 = {
   id: "file",
   contents: "Test content",
 };
+
+// I Can setup data-testid in order to make the test more accurate and stable in reality.
+// This is just a quickest way to make sure things work
+
 describe("Test Tree Directories", () => {
   beforeAll(() => {
     global.fetch = jest.fn();
@@ -51,6 +55,7 @@ describe("Test Tree Directories", () => {
   afterAll(() => jest.clearAllMocks());
 
   it("Should run correctly", async () => {
+    //Verify Tree render correctly
     global.fetch.mockImplementation(() => {
       return Promise.resolve({
         json: () => Promise.resolve(MOCK_DATA_1),
@@ -62,6 +67,8 @@ describe("Test Tree Directories", () => {
     const file = await screen.findByText(MOCK_DATA_1.entries[1].name);
     expect(directory).toBeInTheDocument();
     expect(file).toBeInTheDocument();
+
+    //Verify Sub tree render correctly
     global.fetch.mockImplementation(() => {
       return Promise.resolve({
         json: () => Promise.resolve(MOCK_DATA_2),
@@ -72,6 +79,8 @@ describe("Test Tree Directories", () => {
       MOCK_DATA_2.entries[0].name
     );
     expect(directory2).toBeInTheDocument();
+
+    //Verify Empty text appears when Folder is empty
     global.fetch.mockImplementation(() => {
       return Promise.resolve({
         json: () => Promise.resolve(MOCK_DATA_3),
@@ -82,6 +91,8 @@ describe("Test Tree Directories", () => {
       "Directory is empty."
     );
     expect(emptyText).toBeInTheDocument();
+
+    //Verify Modal appears when clicking on file
     global.fetch.mockImplementation(() => {
       return Promise.resolve({
         json: () => Promise.resolve(MOCK_DATA_4),
