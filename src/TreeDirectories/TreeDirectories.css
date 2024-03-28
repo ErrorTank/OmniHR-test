@@ -1,0 +1,26 @@
+.tree-item > .tree-item--name {
+  cursor: pointer;
+  padding: 12px 16px;
+  transition: background-color 0.2s ease;
+  border-radius: 12px;
+  margin: 0;
+  margin-bottom: 6px;
+  display: inline-block;
+  background-color: #f9f9f9;
+}
+
+.tree-item > .folder--items {
+  display: none;
+  padding-left: 24px;
+}
+.tree-item > .folder--items > .folder--items--empty {
+  padding: 12px 16px;
+  opacity: 0.5;
+}
+
+.tree-item.expand > .folder--items {
+  display: block;
+}
+.tree-item.expand > .tree-item--name {
+  color: #3b82f6;
+}
